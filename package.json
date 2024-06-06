@@ -1,0 +1,75 @@
+{
+  "name": "electron-vue3-ts-vite-test1",
+  "private": true,
+  "version": "0.0.1",
+  "main": "dist-electron/index.js",
+  "author": "Sapphire611",
+  "description": "test...",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc && rimraf dist-electron && vite build && electron-builder",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.2.47",
+    "vue-router": "^4.3.2"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.1.0",
+    "electron": "^25.2.0",
+    "electron-builder": "^24.4.0",
+    "electron-devtools-installer": "^3.2.0",
+    "rimraf": "^5.0.1",
+    "typescript": "^5.0.2",
+    "vite": "^4.3.9",
+    "vite-plugin-electron": "^0.12.0",
+    "vite-plugin-electron-renderer": "^0.14.5",
+    "vue-tsc": "^1.4.2"
+  },
+  "build": {
+    "appId": "com.electron.desktop",
+    "productName": "Sapphire611",
+    "asar": true,
+    "copyright": "Copyright © 2024 Sapphire611",
+    "directories": {
+      "output": "release/${version}"
+    },
+    "files": [
+      "./dist",
+      "./package.json",
+      "./dist-electron"
+    ],
+    "mac": {
+      "artifactName": "${productName}_${version}.${ext}",
+      "target": [
+        "dmg"
+      ]
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "artifactName": "${productName}_${version}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "deleteAppDataOnUninstall": false
+    },
+    "publish": [
+      {
+        "provider": "generic",
+        "url": "http://127.0.0.1:8080"
+      }
+    ],
+    "releaseInfo": {
+      "releaseNotes": "版本更新的具体内容"
+    }
+  }
+}
